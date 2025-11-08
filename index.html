@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro My Hero Academia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎭 Foro My Hero Academia</h1>
+            <nav>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <span id="usernameDisplay"></span>
+                    <button onclick="logout()" class="btn-secondary">Cerrar Sesión</button>
+                </div>
+                <div class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="btn-secondary">Iniciar Sesión</a>
+                    <a href="signup.html" class="btn-primary">Crear Cuenta</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="forum-header">
+            <h2>Discusiones sobre My Hero Academia</h2>
+            <button id="newPostBtn" class="btn-primary" onclick="showNewPostForm()" style="display: none;">
+                + Nueva Publicación
+            </button>
+        </div>
+
+        <!-- Formulario para nueva publicación -->
+        <div id="newPostForm" class="post-form" style="display: none;">
+            <h3>Crear Nueva Publicación</h3>
+            <form onsubmit="createPost(event)">
+                <input type="text" id="postTitle" placeholder="Título de la publicación" required>
+                <textarea id="postContent" placeholder="Escribe tu publicación..." rows="5" required></textarea>
+                <input type="url" id="postImage" placeholder="URL de la imagen (opcional)">
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Publicar</button>
+                    <button type="button" class="btn-secondary" onclick="hideNewPostForm()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Lista de publicaciones -->
+        <div id="postsContainer" class="posts-container">
+            <!-- Las publicaciones se cargarán aquí -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Foro My Hero Academia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

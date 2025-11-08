@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - Foro My Hero Academia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎭 Foro My Hero Academia</h1>
+            <nav>
+                <a href="index.html" class="btn-secondary">Volver al Foro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>Crear Cuenta</h2>
+                <form onsubmit="signup(event)">
+                    <div class="form-group">
+                        <label for="signupUsername">Usuario:</label>
+                        <input type="text" id="signupUsername" required minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email:</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Contraseña:</label>
+                        <input type="password" id="signupPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Crear Cuenta</button>
+                </form>
+                <p class="auth-link">
+                    ¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a>
+                </p>
+                <div id="signupError" class="error-message"></div>
+                <div id="signupSuccess" class="success-message"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Foro My Hero Academia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function signup(event) {
+            event.preventDefault();
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errorDiv = document.getElementById('signupError');
+            const successDiv = document.getElementById('signupSuccess');
+
+            errorDiv.textContent = '';
+            successDiv.textContent = '';
+
+            if (window.registerUser(username, email, password)) {
+                successDiv.textContent = 'Cuenta creada exitosamente. Redirigiendo...';
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+            } else {
+                errorDiv.textContent = 'El usuario ya existe. Por favor, elige otro nombre de usuario.';
+            }
+        }
+    </script>
+</body>
+</html>
+
